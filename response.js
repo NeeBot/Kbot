@@ -3,9 +3,6 @@ function reload(r) {
             if(sender == "조우영"){
             	if (msg == "$로딩"){
             		reloadcheck = 1;
-            	if(reloadcheck == 1){
-            		return;
-            	}
             	var Timer = new Date();
             	file = "storage/emulated/0/kbot/response.js";
             	checksum = org.jsoup.Jsoup.connect("https://github.com/NeeBot/Kbot/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
