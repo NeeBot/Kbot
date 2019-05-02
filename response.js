@@ -1,7 +1,7 @@
 function reload(r) {
         if(r.room == "시립대 봇제작방" || r.room == "조우영"){
             if(r.sender == "조우영" || r.sender == "Nee"){
-            	if (r.msg == "$로딩"){
+            	
             		reloadcheck = 1;
             	var Timer = new Date();
             	file = "storage/emulated/0/kbot/response.js";
@@ -23,7 +23,6 @@ function reload(r) {
             	var time = (new Date() - Timer) / 1000;
             	reloadcheck = 0;
             	r.replier.reply("reloading 완료 / " + time + "s\n" + new Date());
-            	}
             }
         }
     }
@@ -47,6 +46,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                     return;
                 } catch (e) { replier.reply(e + "\n" + e.stack); }
             }
+        }
+        
+        if (r.msg == "$로딩"){
+        	reload(r);
         }
 
     }
