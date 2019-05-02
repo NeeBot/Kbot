@@ -2,27 +2,30 @@ function reload(r) {
         if(room == "시립대 봇제작방" || room == "조우영"){
             if(sender == "조우영"){
             	if (msg == "$로딩"){
-            	reloadcheck = 1;
-            var Timer = new Date();
-            file = "storage/emulated/0/kbot/response.js";
-            checksum = org.jsoup.Jsoup.connect("https://github.com/NeeBot/Kbot/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
-            conn = new java.net.URL("https://raw.githubusercontent.com/NeeBot/Kbot/"+checksum+"/response.js").openConnection();
-            br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
-            str = "";
-            tmp = null;
-            while ((tmp = br.readLine()) != null) {
-                str += tmp + "\n";
-            }
-            var filedir = new java.io.File(file);
-            var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
-            bw.write(str.toString());
-            bw.close();
-            var time = (new Date() - Timer) / 1000;
-            r.replier.reply("파일저장 완료 / " + time + "s\n" + new Date() );
-            Api.reload();
-            var time = (new Date() - Timer) / 1000;
-            reloadcheck = 0;
-            r.replier.reply("reloading 완료 / " + time + "s\n" + new Date());
+            		reloadcheck = 1;
+            	if(reloadcheck == 1){
+            		return;
+            	}
+            	var Timer = new Date();
+            	file = "storage/emulated/0/kbot/response.js";
+            	checksum = org.jsoup.Jsoup.connect("https://github.com/NeeBot/Kbot/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
+            	conn = new java.net.URL("https://raw.githubusercontent.com/NeeBot/Kbot/"+checksum+"/response.js").openConnection();
+            	br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
+            	str = "";
+            	tmp = null;
+            	while ((tmp = br.readLine()) != null) {
+            		str += tmp + "\n";
+            	}
+            	var filedir = new java.io.File(file);
+            	var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
+            	bw.write(str.toString());
+            	bw.close();
+            	var time = (new Date() - Timer) / 1000;
+            	r.replier.reply("파일저장 완료 / " + time + "s\n" + new Date() );
+            	Api.reload();
+            	var time = (new Date() - Timer) / 1000;
+            	reloadcheck = 0;
+            	r.replier.reply("reloading 완료 / " + time + "s\n" + new Date());
             	}
             }
         }
