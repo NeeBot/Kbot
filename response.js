@@ -1,7 +1,6 @@
 function reload(r) {
         if(r.room == "시립대 봇제작방" || r.room == "조우영"){
             if(r.sender == "조우영" || r.sender == "Nee"){
-            	
             		reloadcheck = 1;
             	var Timer = new Date();
             	file = "storage/emulated/0/kbot/response.js";
@@ -48,14 +47,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             }
         }
         
-        if (r.msg == "$로딩"){
+        if (r.msg == "$로딩"){                  //리로딩
         	reload(r);
         }
 
     }
 
 
-    if (room == "조우영" || room == "킹익들" || room == "98+군인" || room == "시립대 봇제작방") {
+    if (room == "조우영" || room == "킹익들" || room == "98+군인" || room == "시립대 봇제작방" || room == "김정빈") {
         if (msg.indexOf("$기능") == 0) {
             if(msg == "$기능"){
                 replier.reply("$실검 / $날씨\n\n자세한 기능을 알고싶으면\n'$기능 [기능명]'을 입력하세요");
