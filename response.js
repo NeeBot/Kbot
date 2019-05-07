@@ -42,7 +42,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
     };
     
-    if(msg == 시간){
+    if(msg == $시간){
     	replier.reply(YYYYMMDD);
     }
 
