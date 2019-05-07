@@ -26,10 +26,7 @@ function reload(r) {
         }
     }
 
-var YEAR = Date().replace('May', '05').split(' ')[3];                       //년
-var MONTH = Date().replace('May', '05').split(' ')[2];                      //월
-var DATE = Date().replace('May', '05').split(' ')[1];                       //일
-var YYYYMMDD = YEAR + MONTH + DATE;
+
 
 var D = require("DBManager.js")("D");              //DB
 
@@ -41,6 +38,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             this.replier.reply(new String(str));
         }
     };
+    
+    var YEAR = Date().replace('May', '05').split(' ')[3];                       //년
+    var MONTH = Date().replace('May', '05').split(' ')[2];                      //월
+    var DATE = Date().replace('May', '05').split(' ')[1];                       //일
+    var YYYYMMDD = YEAR + MONTH + DATE;
     
     if(msg == $시간){
     	replier.reply(YYYYMMDD);
