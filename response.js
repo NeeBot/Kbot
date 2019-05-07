@@ -55,6 +55,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
     if (room == "조우영" || room == "킹익들" || room == "98+군인" || room == "시립대 봇제작방" || room == "김정빈") {
+
+        var YEAR = Date().replace('May', '05').split(' ')[3];
+        var MONTH = Date().replace('May', '05').split(' ')[1]; 
+        var DATE = Date().replace('May', '05').split(' ')[2];
+        
+        if (msg == "$시간"){
+            replier.reply(YEAR+MONTH+DATE);
+        }
         if (msg.indexOf("$기능") == 0) {
             if(msg == "$기능"){
                 replier.reply("$실검 / $날씨\n\n자세한 기능을 알고싶으면\n'$기능 [기능명]'을 입력하세요");
