@@ -56,9 +56,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     if (room == "조우영" || room == "킹익들" || room == "98+군인" || room == "시립대 봇제작방" || room == "김정빈") {
 
-        var YEAR = Date().replace('May', '05').split(' ')[3];
-        var MONTH = Date().replace('May', '05').split(' ')[1]; 
-        var DATE = Date().replace('May', '05').split(' ')[2];
+        var YEAR = Date().split(' ')[3];
+        var MONTH = Date().replace('Jan', '01').replace('Feb', '02').replace('Mar', '03').replace('Apr', '04').replace('May', '05').replace('June', '06').replace('Jul', '07').replace('Aug', '08').replace('Sept', '05').replace('Oct', '05').replace('Nov', '05').replace('Dec', '05').split(' ')[1]; 
+        var DATE = Date().split(' ')[2];
         
         if (msg == "$시간"){
             replier.reply(YEAR+MONTH+DATE);
