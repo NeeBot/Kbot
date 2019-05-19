@@ -39,13 +39,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
     };
     
-    var YEAR = Date().replace('May', '05').split(' ')[3];                       //년
-    var MONTH = Date().replace('May', '05').split(' ')[1];                      //월
-    var DATE = Date().replace('May', '05').split(' ')[2];                       //일
-    var YYYYMMDD = YEAR + MONTH + DATE;
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var date = today.getDay();
+    var YYYYMMDD = year + month + date;
     
     if(msg == $시간){
-    	r.replier.reply(YYYYMMDD);
+    	r.replier.reply(YYYYMMDD); 
     }
 
     if (room == "조우영" || room =="시립대 봇제작방") {
