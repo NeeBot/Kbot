@@ -1,32 +1,30 @@
 function reload(r) {
-        if(r.room == "시립대 봇제작방" || r.room == "조우영"){
-            if(r.sender == "조우영" || r.sender == "Nee"){
-            		reloadcheck = 1;
-            	var Timer = new Date();
-            	file = "storage/emulated/0/kbot/response.js";
-            	checksum = org.jsoup.Jsoup.connect("https://github.com/NeeBot/Kbot/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
-            	conn = new java.net.URL("https://raw.githubusercontent.com/NeeBot/Kbot/"+checksum+"/response.js").openConnection();
-            	br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
-            	str = "";
-            	tmp = null;
-            	while ((tmp = br.readLine()) != null) {
-            		str += tmp + "\n";
-            	}
-            	var filedir = new java.io.File(file);
-            	var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
-            	bw.write(str.toString());
-            	bw.close();
-            	var time = (new Date() - Timer) / 1000;
-            	r.replier.reply("파일저장 완료 / " + time + "s\n" + new Date() );
-            	Api.reload();
-            	var time = (new Date() - Timer) / 1000;
-            	reloadcheck = 0;
-            	r.replier.reply("reloading 완료 / " + time + "s\n" + new Date());
+    if(r.room == "시립대 봇제작방" || r.room == "조우영"){
+        if(r.sender == "조우영" || r.sender == "Nee"){
+            reloadcheck = 1;
+            var Timer = new Date();
+            file = "storage/emulated/0/kbot/response.js";
+            checksum = org.jsoup.Jsoup.connect("https://github.com/NeeBot/Kbot/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
+            conn = new java.net.URL("https://raw.githubusercontent.com/NeeBot/Kbot/"+checksum+"/response.js").openConnection();
+            br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
+            str = "";
+            tmp = null;
+            while ((tmp = br.readLine()) != null) {
+                str += tmp + "\n";
             }
+            var filedir = new java.io.File(file);
+            var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
+            bw.write(str.toString());
+            bw.close();
+            var time = (new Date() - Timer) / 1000;
+            r.replier.reply("파일저장 완료 / " + time + "s\n" + new Date() );
+            Api.reload();
+            var time = (new Date() - Timer) / 1000;
+            reloadcheck = 0;
+            r.replier.reply("reloading 완료 / " + time + "s\n" + new Date());
         }
     }
-
-
+}
 
 var D = require("DBManager.js")("D");              //DB
 
@@ -38,6 +36,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             this.replier.reply(new String(str));
         }
     };
+<<<<<<< HEAD
     
     var today = new Date();
     var year = today.getFullYear();
@@ -48,6 +47,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     if(msg == $시간){
     	r.replier.reply(YYYYMMDD); 
     }
+=======
+>>>>>>> cdac842ce688142370e79776faafae11f7cdbbda
 
     if (room == "조우영" || room =="시립대 봇제작방") {
         if(sender == "조우영" || sender == "Nee"){
@@ -60,13 +61,21 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
         
         if (r.msg == "$로딩"){                  //리로딩
-        	reload(r);
+            reload(r);
         }
 
     }
 
 
     if (room == "조우영" || room == "킹익들" || room == "98+군인" || room == "시립대 봇제작방" || room == "김정빈") {
+
+        var YEAR = Date().split(' ')[3];
+        var MONTH = Date().replace('Jan', '01').replace('Feb', '02').replace('Mar', '03').replace('Apr', '04').replace('May', '05').replace('June', '06').replace('Jul', '07').replace('Aug', '08').replace('Sept', '05').replace('Oct', '05').replace('Nov', '05').replace('Dec', '05').split(' ')[1]; 
+        var DATE = Date().split(' ')[2];
+        
+        if (msg == "$시간"){
+            replier.reply(YEAR+MONTH+DATE);
+        }
         if (msg.indexOf("$기능") == 0) {
             if(msg == "$기능"){
                 replier.reply("$실검 / $날씨\n\n자세한 기능을 알고싶으면\n'$기능 [기능명]'을 입력하세요");
@@ -131,10 +140,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 replier.reply("대한민국 육군이 말하는 중입니다 조용히해주십시오");
             }
         }
-        if(msg.indexOf("$야구") == 0){
-        	if(msg == "$야구 오늘" && ){
-             var baseballscore0 = org.jsoup.Jsoup.connect('https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EC%95%BC%EA%B5%AC').get().select('tbody[class=_scroll_content]').get(0).select('tbody[class]').toArray().map(v=>v.text()).join("\n");
-        	}
-        	}
+        // if(msg.indexOf("$야구") == 0){
+        //      var baseballscore = org.jsoup.Jsoup.connect('https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EC%95%BC%EA%B5%AC').get().select('tbody[class=_scroll_content]').get(0).select('tr[class]').toArray().map(v=>v.text()).join("\n");
+        // }
     }
 }
