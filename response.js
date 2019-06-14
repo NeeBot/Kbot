@@ -70,9 +70,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         var MONTH = Date().replace('Jan', '01').replace('Feb', '02').replace('Mar', '03').replace('Apr', '04').replace('May', '05').replace('June', '06').replace('Jul', '07').replace('Aug', '08').replace('Sept', '05').replace('Oct', '05').replace('Nov', '05').replace('Dec', '05').split(' ')[1]; 
         var DATE = Date().split(' ')[2];
         
-        if (msg == "$시간"){
-            replier.reply(YEAR+MONTH+DATE);
-        }
         if (msg.indexOf("$기능") == 0) {
             if(msg == "$기능"){
                 replier.reply("$실검 / $날씨\n\n자세한 기능을 알고싶으면\n'$기능 [기능명]'을 입력하세요");
