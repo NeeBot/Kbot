@@ -58,9 +58,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     var month = today.getMonth();
     var date = today.getDay();
     var YYYYMMDD = year + month + date;
+    var YYYYMMDD2 = today.getFullYear + today.getMonth + today.getDay();
     
     if(msg == "$시간"){
     	r.replier.reply(YYYYMMDD); 
+    	r.replier.reply(YYYYMMDD2);
     }
 
 
