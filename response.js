@@ -55,12 +55,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     
     var today = new Date();
     var year = today.getFullYear();
-    var month = today.getMonth();
+    var month = today.getMonth() + 1;
     var date = today.getDay();
-    var YYYYMMDD = year + "" + month++1 + "" + date;
+    var YYYYMMDD = year + "" + month + "" + date;
+    var today = new Date().toISOString().slice(0,10).replace(/-/g,'');
     
     if(msg == "$시간"){
     	r.replier.reply(YYYYMMDD); 
+    	r.replier.reply(today);
+    	
     }
 
 
