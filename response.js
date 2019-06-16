@@ -135,6 +135,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
          if(msg.indexOf("$야구") == 0){
               var baseballscore = org.jsoup.Jsoup.connect('https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EC%95%BC%EA%B5%AC').get().select('tbody[class=_scroll_content]').get(0).select('tr[class]').toArray().map(v=>v.text()).join("\n").replace("두산"," 두산 ").replace("롯데"," 롯데 ").replace("한화"," 한화 ").replace("삼성"," 삼성 ").replace("KT"," KT ").replace("LG"," LG ").replace("NC"," NC ").replace("SK"," SK ").replace("키움"," 키움 ").replace("KIA"," KIA ");
+              r.replier.reply(baseballscore);
          }
     }
 }
