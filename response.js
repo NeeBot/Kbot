@@ -53,16 +53,16 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     }
     
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = today.getMonth() + 1;
-    var date = today.getDay();
-    var YYYYMMDD = year + "" + month + "" + date;
-    var today = new Date().toISOString().slice(0,10).replace(/-/g,'');
+    //var today = new Date();
+    //var year = today.getFullYear();
+    //var month = today.getMonth() + 1;
+    //var date = today.getDay();
+    //var YYYYMMDD = year + "" + month + "" + date;
+    var YYYYMMDD = new Date().toISOString().slice(0,10).replace(/-/g,'');
     
     if(msg == "$시간"){
-    	r.replier.reply(YYYYMMDD); 
-    	r.replier.reply(today);
+    	//r.replier.reply(YYYYMMDD); 
+    	r.replier.reply(YYYYMMDD);
     	
     }
 
@@ -134,7 +134,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             }
         }
          if(msg.indexOf("$야구") == 0){
-              var baseballscore = org.jsoup.Jsoup.connect('https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EC%95%BC%EA%B5%AC').get().select('tbody[class=_scroll_content]').get(0).select('tr[class]').toArray().map(v=>v.text()).split("중계채널")[0].join("\n");
+              var baseballscore = org.jsoup.Jsoup.connect('https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EC%95%BC%EA%B5%AC').get().select('tbody[class=_scroll_content]').get(0).select('tr[class]').toArray().map(v=>v.text()).join("\n").replace("두산"," 두산 ").replace("롯데"," 롯데 ").replace("한화"," 한화 ").replace("삼성"," 삼성 ").replace("KT"," KT ").replace("LG"," LG ").replace("NC"," NC ").replace("SK"," SK ").replace("키움"," 키움 ").replace("KIA"," KIA ");
          }
     }
 }
