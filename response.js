@@ -57,7 +57,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     var year = today.getFullYear();
     var month = today.getMonth();
     var date = today.getDay();
-    var YYYYMMDD = year + month + date;
+    var YYYYMMDD = year + "" + month + "" + date;
     
     if(msg == "$시간"){
     	r.replier.reply(YYYYMMDD); 
@@ -130,8 +130,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 replier.reply("대한민국 육군이 말하는 중입니다 조용히해주십시오");
             }
         }
-        // if(msg.indexOf("$야구") == 0){
-        //      var baseballscore = org.jsoup.Jsoup.connect('https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EC%95%BC%EA%B5%AC').get().select('tbody[class=_scroll_content]').get(0).select('tr[class]').toArray().map(v=>v.text()).join("\n");
-        // }
+         if(msg.indexOf("$야구") == 0){
+              var baseballscore = org.jsoup.Jsoup.connect('https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EC%95%BC%EA%B5%AC').get().select('tbody[class=_scroll_content]').get(0).select('tr[class]').toArray().map(v=>v.text()).split("중계채널")[0].join("\n");
+         }
     }
 }
